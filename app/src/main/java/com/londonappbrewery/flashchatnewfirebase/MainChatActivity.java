@@ -4,7 +4,10 @@ import android.content.SharedPreferences;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -20,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainChatActivity extends AppCompatActivity {
 
     // TODO: Add member variables here:
+    Toolbar toolbar;
     private String mDisplayName;
     private ListView mChatListView;
     private EditText mInputText;
@@ -42,6 +46,8 @@ setupDisplayName();
         mInputText = (EditText) findViewById(R.id.messageInput);
         mSendButton = (ImageButton) findViewById(R.id.sendButton);
         mChatListView = (ListView) findViewById(R.id.chat_list_view);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // TODO: Send the message when the "enter" button is pressed
 mInputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -64,6 +70,19 @@ mInputText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return true;
+
+
+    }
     // TODO: Retrieve the display name from the Shared Preferences
 
 
